@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="Median OneSignal Push Notifications" icon-name="utility:notification">
+        <div class="container">
+
+            <!-- Not-in-app warning -->
+            <template if:false={isInMedianApp}>
+                <div class="not-in-app-banner">
+                    ⚠️ OneSignal features are only available inside the Median mobile app.
+                </div>
+            </template>
+
+            <!-- ── OneSignal Info ───────────────────────────── -->
+            <div class="section-title">OneSignal Info</div>
+            <div class="button-group">
+                <lightning-button label="Get Info (Promise)" variant="brand" disabled={isNotInApp}
+                    onclick={getInfoViaPromise}>
+                </lightning-button>
+                <lightning-button label="Get Info (Callback)" variant="neutral" disabled={isNotInApp}
+                    onclick={getInfoViaCallback}>
+                </lightning-button>
+                <lightning-button label="Clear" variant="destructive-text" onclick={clearInfo}>
+                </lightning-button>
+            </div>
+
+            <template if:true={oneSignalInfo}>
+                <div class="info-label">
+                    OneSignal Info
+                    <span class="status-badge info">received</span>
+                </div>
+                <div class="info-box">{oneSignalInfoJson}</div>
+            </template>
+
+            <hr class="divider" />
+
+            <!-- ── User Login ──────────────────────────────── -->
+            <div class="section-title">User Management</div>
+            <div class="input-row">
+                <lightning-input type="text" label="External User ID (e.g. email or account number)"
+                    value={externalUserId} onchange={handleUserIdChange} placeholder="[email protected]">
+                </lightning-input>
+                <lightning-button label="Login User" variant="brand" disabled={isLoginDisabled} onclick={loginUser}>
+                </lightning-button>
+            </div>
+
+            <div class="button-group">
+                <lightning-button label="Logout User" variant="destructive" disabled={isNotInApp} onclick={logoutUser}>
+                </lightning-button>
+            </div>
+
+            <!-- Login / Logout status feedback -->
+            <template if:true={loginStatus}>
+                <div class="info-label">
+                    Login Status
+                    <span class={loginStatusBadgeClass}>{loginStatus}</span>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="error-text">{error}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

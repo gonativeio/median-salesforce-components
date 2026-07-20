@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Median PDF Viewer" icon-name="doctype:pdf">
+        <div class="container">
+
+            <!-- Not-in-app warning -->
+            <template if:false={isInMedianApp}>
+                <div class="not-in-app-banner">
+                    ⚠️ Open and Download via Median bridge are only available inside the Median mobile app.
+                </div>
+            </template>
+
+            <!-- ── PDF URL Input ─────────────────────────────────── -->
+            <div class="section-title">PDF URL</div>
+            <p class="hint-text">
+                Enter a publicly accessible PDF URL. The Median bridge will use this URL
+                to open or download the file natively on the device without leaving the page.
+            </p>
+
+            <lightning-input type="url" label="PDF URL" value={pdfUrl} onchange={handleUrlChange}
+                placeholder="https://example.com/document.pdf" style="margin-bottom: 14px;">
+            </lightning-input>
+
+            <hr class="divider" />
+
+            <!-- ── Active URL display ────────────────────────────── -->
+            <div class="section-title">Active PDF URL</div>
+            <div class="output-label">URL passed to Median bridge</div>
+            <textarea class="output-box" readonly>{pdfUrl}</textarea>
+
+            <!-- ── Actions ───────────────────────────────────────── -->
+            <div class="button-group">
+                <lightning-button label="Open PDF in App" variant="brand" disabled={isOpenDisabled} onclick={openPdf}>
+                </lightning-button>
+                <lightning-button label="Download PDF" variant="neutral" disabled={isDownloadDisabled}
+                    onclick={downloadPdf}>
+                </lightning-button>
+                <lightning-button label="Clear" variant="destructive-text" disabled={isNoPdfUrl} onclick={clearUrl}>
+                </lightning-button>
+            </div>
+
+            <template if:true={actionStatus}>
+                <div class="status-row">
+                    <span class={actionBadgeClass}>{actionStatus}</span>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="error-text">{error}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,101 @@
+<template>
+    <lightning-card title="Median Biometric Auth" icon-name="utility:shield">
+        <div class="container">
+
+            <!-- Not-in-app warning -->
+            <template if:false={isInMedianApp}>
+                <div class="not-in-app-banner">
+                    ⚠️ Biometric Auth features are only available inside the Median mobile app.
+                </div>
+            </template>
+
+            <!-- ── Biometric Status ──────────────────────────────── -->
+            <div class="section-title">Biometric Status</div>
+
+            <div class="button-group">
+                <lightning-button label="Check Biometric Status" variant="brand" disabled={isNotInApp}
+                    onclick={checkStatus}>
+                </lightning-button>
+            </div>
+
+            <template if:true={biometricStatus}>
+                <div class="biometric-status-box">
+                    <div class="kv">
+                        <span class="kv-key">Has Touch/Face ID:</span>
+                        <span class={hasTouchIdBadgeClass}>{hasTouchIdLabel}</span>
+                    </div>
+                    <div class="kv">
+                        <span class="kv-key">Has Saved Secret:</span>
+                        <span class={hasSecretBadgeClass}>{hasSecretLabel}</span>
+                    </div>
+                </div>
+            </template>
+
+            <hr class="divider" />
+
+            <!-- ── Save Secret ──────────────────────────────────── -->
+            <div class="section-title">Save Secret</div>
+            <div class="field-row">
+                <lightning-input type="text" label="Username" value={saveUsername} onchange={handleSaveUsernameChange}
+                    placeholder="Enter username">
+                </lightning-input>
+                <lightning-input type="password" label="Password / Secret" value={savePassword}
+                    onchange={handleSavePasswordChange} placeholder="Enter password or secret value">
+                </lightning-input>
+            </div>
+
+            <div class="button-group">
+                <lightning-button label="Save Secret (Biometric)" variant="brand" disabled={isSaveDisabled}
+                    onclick={saveSecret}>
+                </lightning-button>
+                <lightning-button label="Delete Saved Secret" variant="destructive-text" disabled={isNotInApp}
+                    onclick={deleteSecret}>
+                </lightning-button>
+            </div>
+
+            <template if:true={saveStatus}>
+                <div class="status-row">
+                    <span class={saveStatusBadgeClass}>{saveStatus}</span>
+                </div>
+            </template>
+
+            <hr class="divider" />
+
+            <!-- ── Retrieve Secret ──────────────────────────────── -->
+            <div class="section-title">Retrieve Secret</div>
+            <p style="font-size:13px;color:#706e6b;margin-bottom:12px;">
+                Prompts the user for biometric authentication and returns the saved secret.
+                The result is displayed in the read-only box below without navigating away.
+            </p>
+
+            <div class="button-group">
+                <lightning-button label="Get Secret via Biometrics" variant="brand" disabled={isNotInApp}
+                    onclick={getSecret}>
+                </lightning-button>
+                <lightning-button label="Clear Output" variant="destructive-text" onclick={clearOutput}>
+                </lightning-button>
+            </div>
+
+            <!-- Dedicated output textbox for retrieved secret -->
+            <div class="output-label">Retrieved Secret Output</div>
+            <template if:true={retrievedOutput}>
+                <textarea class="output-box" readonly>{retrievedOutput}</textarea>
+            </template>
+            <template if:false={retrievedOutput}>
+                <div class="output-box empty">Secret will appear here after successful biometric authentication…</div>
+            </template>
+
+            <template if:true={retrieveStatus}>
+                <div class="status-row">
+                    <span class={retrieveStatusBadgeClass}>{retrieveStatus}</span>
+                </div>
+            </template>
+
+            <!-- Global error display -->
+            <template if:true={error}>
+                <p class="error-text">{error}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="QR/Barcode Scanner">
+        <div class="container">
+
+            <lightning-button label="Scan QR/Barcode" variant="brand" onclick={launchScanner}>
+            </lightning-button>
+
+            <template if:true={scanResult}>
+                <div class="result">
+                    <p><strong>Scanned Text:</strong> {scanResult.text}</p>
+                    <p><strong>Format:</strong> {scanResult.format}</p>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="error">{error}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

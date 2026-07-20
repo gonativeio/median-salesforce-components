@@ -1,0 +1,100 @@
+<template>
+    <lightning-card title="Median QR / Barcode Scanner" icon-name="utility:scan">
+        <div class="container">
+
+            <!-- Not-in-app warning -->
+            <template if:false={isInMedianApp}>
+                <div class="not-in-app-banner">
+                    ⚠️ QR / Barcode scanning is only available inside the Median mobile app.
+                </div>
+            </template>
+
+            <!-- ── Custom Prompt ──────────────────────────────────── -->
+            <div class="section-title">Scanner Prompt Message</div>
+            <p class="hint-text">
+                Optionally set a custom message shown to users inside the native scanner UI before they scan.
+            </p>
+            <div class="prompt-row">
+                <lightning-input type="text" label="Custom Prompt Text" value={customPrompt}
+                    onchange={handlePromptChange} placeholder="e.g. Align the QR code within the frame to scan">
+                </lightning-input>
+                <lightning-button label="Set Prompt" variant="neutral" disabled={isSetPromptDisabled}
+                    onclick={setPrompt}>
+                </lightning-button>
+            </div>
+
+            <template if:true={promptStatus}>
+                <div class="status-row">
+                    <span class={promptBadgeClass}>{promptStatus}</span>
+                </div>
+            </template>
+
+            <hr class="divider" />
+
+            <!-- ── Scan Controls ──────────────────────────────────── -->
+            <div class="section-title">Launch Scanner</div>
+            <p class="hint-text">
+                Opens the native camera scanner. Result is captured below without leaving the page.
+            </p>
+
+            <div class="button-group">
+                <lightning-button label="Scan via Promise" variant="brand" disabled={isScanDisabled}
+                    onclick={scanViaPromise}>
+                </lightning-button>
+                <lightning-button label="Scan via Callback" variant="neutral" disabled={isScanDisabled}
+                    onclick={scanViaCallback}>
+                </lightning-button>
+                <lightning-button label="Clear Result" variant="destructive-text" onclick={clearResult}>
+                </lightning-button>
+            </div>
+
+            <!-- Scanning in progress indicator -->
+            <template if:true={isScanning}>
+                <div class="scanning-indicator">
+                    <lightning-spinner alternative-text="Scanning" size="small"></lightning-spinner>
+                    <span>Waiting for scan result…</span>
+                </div>
+            </template>
+
+            <!-- ── Result Output ───────────────────────────────────── -->
+            <div class="output-label">Scan Result — Raw Output</div>
+            <template if:true={rawOutput}>
+                <textarea class="output-box" readonly>{rawOutput}</textarea>
+            </template>
+            <template if:false={rawOutput}>
+                <div class="output-box empty">Scanned text / code will appear here…</div>
+            </template>
+
+            <!-- Structured key-value breakdown -->
+            <template if:true={scanResult}>
+                <div class="result-card">
+                    <div class="kv">
+                        <span class="kv-key">Code:</span>
+                        <span class="kv-value">{scanResult.code}</span>
+                    </div>
+                    <div class="kv">
+                        <span class="kv-key">Type:</span>
+                        <span class="kv-value">{scanResult.type}</span>
+                    </div>
+                    <div class="kv">
+                        <span class="kv-key">Success:</span>
+                        <span class="kv-value">{scanResult.successLabel}</span>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Status badge -->
+            <template if:true={scanStatus}>
+                <div class="status-row">
+                    <span class={scanBadgeClass}>{scanStatus}</span>
+                </div>
+            </template>
+
+            <!-- Error -->
+            <template if:true={error}>
+                <p class="error-text">{error}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
