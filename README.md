@@ -373,7 +373,7 @@ get _median() {
 }
 ```
 
-This stepo is optional but ensures compatibility across different Median JavaScript Library embeds (App-injected or via NPM).
+This step is optional but ensures compatibility across different Median JavaScript Library embeds (App-injected or via NPM).
 
 ## Resources
 

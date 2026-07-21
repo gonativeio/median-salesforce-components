@@ -46,7 +46,7 @@ export default class MedianOneSignal extends LightningElement {
 
     /** Returns the median bridge object, normalising both casing conventions */
     get _median() {
-        return window.Median || window.Median || null;
+        return window.median || window.Median || null;
     }
 
     // ── Info Methods ────────────────────────────────────────────────
