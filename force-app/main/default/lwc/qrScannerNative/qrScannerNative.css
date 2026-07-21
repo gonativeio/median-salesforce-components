@@ -1,0 +1,151 @@
+.container {
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3e3e3c;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 18px 0;
+}
+
+/* Prompt input row */
+.prompt-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.prompt-row lightning-input {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Output textbox */
+.output-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #706e6b;
+    margin-bottom: 4px;
+}
+
+.output-box {
+    width: 100%;
+    min-height: 110px;
+    background-color: #f3f3f3;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    box-sizing: border-box;
+    resize: vertical;
+    color: #1a1a1a;
+}
+
+.output-box.empty {
+    color: #a8a8a8;
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+/* Key-value result rows */
+.result-card {
+    background-color: #f9f9f9;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-top: 12px;
+}
+
+.kv {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.kv-key {
+    font-weight: 600;
+    color: #3e3e3c;
+    min-width: 70px;
+}
+
+.kv-value {
+    color: #1a1a1a;
+    word-break: break-all;
+}
+
+/* Badges */
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.badge-success { background-color: #e3f5e1; color: #2e7d32; }
+.badge-error   { background-color: #fde7e9; color: #c62828; }
+.badge-info    { background-color: #e0f0ff; color: #0070d2; }
+
+.error-text {
+    color: #c23934;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.not-in-app-banner {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #856404;
+    margin-bottom: 16px;
+}
+
+.hint-text {
+    font-size: 13px;
+    color: #706e6b;
+    margin-bottom: 12px;
+}
+
+/* Scanning spinner indicator */
+.scanning-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #0070d2;
+    margin-bottom: 10px;
+}
