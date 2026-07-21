@@ -1,15 +1,16 @@
 // jest.config.js
 //
-// Extends the default @salesforce/sfdx-lwc-jest preset.
-// The preset handles:
-//   - Resolving @salesforce/* and c/* module aliases
-//   - Transforming LWC HTML/JS/CSS files via Babel
-//   - Setting up the jsdom test environment
+// Builds on the base config shipped by @salesforce/sfdx-lwc-jest, which handles
+// resolving @salesforce/* and c/* module aliases, transforming LWC HTML/JS/CSS,
+// and setting up the jsdom test environment.
 //
-// Place this file at the repository root alongside package.json.
+// This is the single Jest config for the project — do not also add a "jest" key
+// in package.json, or Jest will refuse to run ("Multiple configurations found").
+
+const { jestConfig } = require('@salesforce/sfdx-lwc-jest/config');
 
 module.exports = {
-    preset: '@salesforce/sfdx-lwc-jest/preset',
+    ...jestConfig,
 
     // Collect coverage from all component JS files, not just tested ones.
     collectCoverageFrom: [
