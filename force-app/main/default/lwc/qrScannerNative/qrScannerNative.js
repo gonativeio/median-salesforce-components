@@ -19,7 +19,7 @@ export default class MedianBarcodeScanner extends LightningElement {
 
     // ── Bridge accessor ────────────────────────────────────────────
     get _median() {
-        return window.Median || window.Median || null;
+        return window.Median || window.median || null;
     }
 
     // ── Computed helpers ───────────────────────────────────────────

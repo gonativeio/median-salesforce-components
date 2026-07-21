@@ -185,7 +185,7 @@ median.onesignal.logout(); // Promise
 Integrates the [Median Auth plugin](https://median.dev/auth) to save and retrieve secrets (e.g. credentials) using the device's native biometric authentication (Face ID / Touch ID / Fingerprint).
 
 <p align="center">
-  <img src="docs/assets/biometric-auth.png" width="300" alt="Biometric Auth">
+  <img src="docs/assets/biometrics.png" width="300" alt="Biometric Auth">
   <br>
   <em>Biometric Auth</em>
 </p>
@@ -211,9 +211,9 @@ Integrates the [Median Auth plugin](https://median.dev/auth) to save and retriev
 
 #### Usage notes
 
-- Secrets are stored as a JSON string: `{ "username": "...", "password": "..." }`. If you want to store a different shape of data, modify the `saveSecret()` method in `medianAuth.js`.
+- Secrets are stored as a JSON string: `{ "username": "...", "password": "..." }`. If you want to store a different shape of data, modify the `saveSecret()` method in `biometricAuth.js`.
 - Retrieval uses the **global callback pattern** (`window.median_auth_get_callback`) so the native layer can return data back into the LWC reactive state without a page reload.
-- `minimumAndroidBiometric` is set to `'strong'` by default (Class 3 biometrics). Change this in `medianAuth.js` if your target devices use Class 2 biometrics.
+- `minimumAndroidBiometric` is set to `'strong'` by default (Class 3 biometrics). Change this in `biometricAuth.js` if your target devices use Class 2 biometrics.
 - If the device has no biometric hardware, the Save button is disabled after a status check confirms `hasTouchId: false`.
 
 #### Median API methods used
@@ -329,9 +329,6 @@ The URL must be:
 window.location.href = url; // Open — no bridge needed
 median.share.downloadFile({ url, open: false }); // Download
 ```
-
-<!-- PLACEHOLDER: Link to a Loom / YouTube recording of this component in action -->
-<!-- 🎥 [Watch demo](PLACEHOLDER) -->
 
 ## Deployment Notes
 
