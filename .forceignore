@@ -1,0 +1,16 @@
+# .forceignore
+# Files and directories excluded from Salesforce deployments and retrievals.
+
+# Salesforce metadata manifests
+package.xml
+
+# LWC local development configuration
+**/jsconfig.json
+**/.eslintrc.json
+
+# LWC Jest tests
+**/__tests__/**
+
+# Jest mocks
+**/__mocks__/**
+**/jest-mocks/**
