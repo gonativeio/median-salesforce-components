@@ -70,9 +70,10 @@ median-salesforce-lwc/
 │
 ├── docs/
 │   └── assets/
-│       ├── salesforce-demo-app.png
-│       ├── onesignal-demo.png
-│       └── qrscanner-demo.png
+│       ├── biometrics.png
+│       ├── experience-builder.png
+│       ├── onesignal-info.png
+│       └── salesforce-demo-app.png
 │
 └── .forceignore
 ```
@@ -226,7 +227,7 @@ median.auth.delete(); // Promise
 
 ---
 
-### medianBarcodeScanner
+### qrScannerNative
 
 Integrates the [Median QR / Barcode Scanner](https://docs.median.co/docs/qr-barcode-scanner) to launch the device camera scanner and return the result directly into the page without navigating away.
 
@@ -361,7 +362,7 @@ The Median JavaScript bridge (`window.median`) is only injected at runtime insid
 
 - An amber warning banner is shown at the top of each card.
 - Buttons that require the bridge are automatically disabled.
-- The **pdfViewer** Open button and **medianBarcodeScanner** Set Prompt button are the only exceptions as these can be partially validated in a desktop browser.
+- The **pdfViewer** Open button and **qrScannerNative** Set Prompt button are the only exceptions as these can be partially validated in a desktop browser.
 
 For full end-to-end testing, load your Experience Cloud URL inside your Median app on a physical iOS or Android device or via virtual simulator in the Median.co App Studio.
 

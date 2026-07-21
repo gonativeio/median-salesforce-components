@@ -13,7 +13,7 @@ export default class MedianOneSignal extends LightningElement {
 
     /** True when running inside the Median mobile app */
     get isInMedianApp() {
-        return typeof window.Median !== 'undefined' || typeof window.Median !== 'undefined';
+        return typeof window.Median !== 'undefined' || typeof window.median !== 'undefined';
     }
 
     /** Inverse, used for disabled attributes */
