@@ -1,12 +1,13 @@
 {
   "name": "median-salesforce-components",
   "version": "1.0.0",
-  "description": "Median JavaScript Bridge components for Salesforce Lightning Web Components (LWC)",
   "private": true,
   "scripts": {
     "test": "sfdx-lwc-jest",
-    "test:watch": "sfdx-lwc-jest --watch",
-    "test:coverage": "sfdx-lwc-jest --coverage"
+    "test:unit": "sfdx-lwc-jest",
+    "test:unit:watch": "sfdx-lwc-jest --watch",
+    "test:unit:coverage": "sfdx-lwc-jest --coverage",
+    "test:unit:debug": "sfdx-lwc-jest --debug"
   },
   "devDependencies": {
     "@salesforce/sfdx-lwc-jest": "^7.0.0"
